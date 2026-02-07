@@ -7,12 +7,11 @@ SQLAlchemy ORM models for the cleaning service bot
 from datetime import datetime
 from typing import Optional, List
 from sqlalchemy import (
-    BigInteger, String, Integer, Numeric, Boolean, Text, 
+    BigInteger, String, Integer, Numeric, Boolean, Text,
     DateTime, CheckConstraint, ForeignKey, func
 )
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-import uuid
 
 
 class Base(DeclarativeBase):
@@ -86,10 +85,10 @@ class Order(Base):
     
     __tablename__ = "orders"
     
-    order_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+    order_id: Mapped[int] = mapped_column(
+        Integer,
         primary_key=True,
-        default=uuid.uuid4
+        autoincrement=True
     )
     order_number: Mapped[int] = mapped_column(
         Integer,
@@ -201,8 +200,8 @@ class OrderStatusHistory(Base):
     __tablename__ = "order_status_history"
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    order_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+    order_id: Mapped[int] = mapped_column(
+        Integer,
         ForeignKey("orders.order_id", ondelete="CASCADE"),
         nullable=False
     )

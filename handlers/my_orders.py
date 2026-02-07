@@ -142,7 +142,7 @@ async def callback_view_order(
     await callback.answer()
     
     # Extract order ID
-    order_id = callback.data.split('_')[2]
+    order_id = int(callback.data.split('_')[2])
     user_id = callback.from_user.id
     
     data = await state.get_data()

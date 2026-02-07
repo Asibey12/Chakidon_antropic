@@ -96,9 +96,9 @@ class OrderRepository:
     @staticmethod
     async def get_by_id(
         session: AsyncSession,
-        order_id: str
+        order_id: int
     ) -> Optional[Order]:
-        """Get order by UUID"""
+        """Get order by ID"""
         stmt = select(Order).where(Order.order_id == order_id)
         result = await session.execute(stmt)
         return result.scalar_one_or_none()
@@ -132,7 +132,7 @@ class OrderRepository:
     @staticmethod
     async def update_status(
         session: AsyncSession,
-        order_id: str,
+        order_id: int,
         new_status: str,
         admin_id: Optional[int] = None,
         notes: Optional[str] = None
@@ -180,7 +180,7 @@ class OrderRepository:
     @staticmethod
     async def save_feedback(
         session: AsyncSession,
-        order_id: str,
+        order_id: int,
         rating: int,
         comment: Optional[str] = None
     ) -> bool:
