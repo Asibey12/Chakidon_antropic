@@ -1,0 +1,18 @@
+# Telegram Bot Framework
+aiogram==3.13.1
+
+# Database
+SQLAlchemy==2.0.35
+asyncpg==0.29.0
+alembic==1.13.3
+
+# Configuration
+python-dotenv==1.0.1
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Phone validation
+phonenumbers==8.13.47
+
+# Utilities
+pytz==2024.2
