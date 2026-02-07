@@ -49,7 +49,7 @@ async def callback_admin_accept_order(
     await callback.answer()
     
     # Extract order ID
-    order_id = callback.data.split('_')[2]
+    order_id = int(callback.data.split('_')[2])
     admin_id = callback.from_user.id
     admin_name = callback.from_user.first_name or "Админ"
     
@@ -100,7 +100,7 @@ async def callback_admin_reject_order(callback: CallbackQuery, state: FSMContext
     
     await callback.answer()
     
-    order_id = callback.data.split('_')[2]
+    order_id = int(callback.data.split('_')[2])
     
     # Ask for rejection reason
     from aiogram.utils.keyboard import InlineKeyboardBuilder
@@ -148,7 +148,7 @@ async def callback_admin_start_order(
     
     await callback.answer()
     
-    order_id = callback.data.split('_')[2]
+    order_id = int(callback.data.split('_')[2])
     admin_id = callback.from_user.id
     admin_name = callback.from_user.first_name or "Админ"
     
@@ -202,7 +202,7 @@ async def callback_admin_complete_order(
     
     await callback.answer()
     
-    order_id = callback.data.split('_')[2]
+    order_id = int(callback.data.split('_')[2])
     admin_id = callback.from_user.id
     admin_name = callback.from_user.first_name or "Админ"
     
